@@ -3,13 +3,154 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Meet the Development Strategies leadership team and advisory board — experienced professionals in public health, social development, and management." />
-  <title>Our Team | Development Strategies</title>
+  <meta name="description" content="Meet the people behind Development Strategies — a curated network of seasoned experts across public health, social development, and management." />
+  <title>Our People | Development Strategies</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="icon" href="media/logo-1.png" type="image/png" />
+  <style>
+    .people-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 2rem 1.5rem;
+      margin-top: 2.5rem;
+    }
+    .person-card {
+      text-align: center;
+      cursor: pointer;
+      transition: transform .25s;
+    }
+    .person-card:hover { transform: translateY(-5px); }
+    .person-card:hover .person-photo-wrap { border-color: var(--teal); }
+    .person-photo-wrap {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto .85rem;
+      border: 3px solid var(--teal-light);
+      background: var(--offwhite);
+      transition: border-color .25s;
+    }
+    .person-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
+    .person-photo-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      background: var(--teal-light);
+    }
+    .person-name {
+      font-weight: 700;
+      color: var(--navy);
+      font-size: .9rem;
+      margin-bottom: .3rem;
+      line-height: 1.3;
+    }
+    .person-role { font-size: .75rem; color: var(--muted); line-height: 1.4; }
+    .click-hint { font-size: .68rem; color: var(--teal); margin-top: .4rem; opacity: 0; transition: opacity .2s; }
+    .person-card:hover .click-hint { opacity: 1; }
+
+    /* Modal */
+    .people-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.55);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    .people-modal.open { display: flex; }
+    .modal-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      max-width: 660px;
+      width: 100%;
+      max-height: 88vh;
+      overflow-y: auto;
+      padding: 2.5rem;
+      position: relative;
+      box-shadow: 0 24px 64px rgba(0,0,0,.25);
+      animation: modalIn .2s ease;
+    }
+    @keyframes modalIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .modal-close-btn {
+      position: absolute; top: 1rem; right: 1.25rem;
+      background: none; border: none; font-size: 1.75rem;
+      cursor: pointer; color: var(--muted); line-height: 1;
+    }
+    .modal-close-btn:hover { color: var(--navy); }
+    .modal-top {
+      display: flex; gap: 1.5rem; align-items: flex-start;
+      margin-bottom: 1.75rem; padding-bottom: 1.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .modal-photo {
+      width: 88px; height: 88px; border-radius: 50%;
+      object-fit: cover; object-position: top;
+      border: 3px solid var(--teal-light); flex-shrink: 0;
+    }
+    .modal-photo-placeholder {
+      width: 88px; height: 88px; border-radius: 50%;
+      border: 3px solid var(--teal-light);
+      background: var(--teal-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.25rem; flex-shrink: 0;
+    }
+    .modal-name { font-family: 'DM Serif Display',serif; font-size: 1.3rem; color: var(--navy); margin-bottom: .3rem; }
+    .modal-desig { font-size: .85rem; color: var(--teal); font-weight: 600; margin-bottom: .3rem; }
+    .modal-edu { font-size: .8rem; color: var(--muted); }
+    .modal-bio { font-size: .88rem; color: var(--text); line-height: 1.75; }
+    .modal-bio p { margin-bottom: .85rem; }
+    .modal-bio p:last-child { margin-bottom: 0; }
+
+    /* Founder */
+    .founder-section { background: var(--navy); padding: 5rem 0; }
+    .founder-inner {
+      display: grid; grid-template-columns: 260px 1fr;
+      gap: 4rem; align-items: center;
+    }
+    .founder-img {
+      width: 100%; aspect-ratio: 3/4;
+      object-fit: cover; object-position: top;
+      border-radius: var(--radius);
+      border: 4px solid rgba(255,255,255,.12);
+    }
+    .founder-qdot {
+      font-family: 'DM Serif Display',serif; font-size: 5rem;
+      color: var(--gold); line-height: .5; margin-bottom: 1.25rem; opacity: .75;
+    }
+    .founder-quote {
+      font-family: 'DM Serif Display',serif; font-size: 1.5rem;
+      color: var(--white); line-height: 1.65; margin: 0 0 2rem;
+    }
+    .founder-byline { display: flex; align-items: center; gap: 1rem; }
+    .founder-byline-line { height: 2px; width: 40px; background: var(--gold); flex-shrink: 0; }
+    .founder-byline-name { color: var(--gold); font-weight: 700; font-size: .95rem; }
+    .founder-byline-title { color: rgba(255,255,255,.5); font-size: .8rem; margin-top: .2rem; }
+
+    @media (max-width: 768px) {
+      .founder-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .founder-img { max-width: 200px; margin: 0 auto; display: block; aspect-ratio: 1/1; border-radius: 50%; }
+      .founder-qdot, .founder-quote { text-align: center; }
+      .founder-byline { justify-content: center; }
+      .people-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+    }
+  </style>
 </head>
 <body>
 
@@ -26,9 +167,12 @@
           <li class="nav-item"><a href="about.html"         class="nav-link">About</a></li>
           <li class="nav-item"><a href="domains.html"       class="nav-link">Domains</a></li>
           <li class="nav-item"><a href="expertise.html"     class="nav-link">Expertise</a></li>
-          <li class="nav-item">
+          <li class="nav-item has-dropdown">
             <span class="nav-link active" tabindex="0">Team <span class="chevron">▾</span></span>
-            <div class="dropdown"><a href="team.html#management">Management Team</a><a href="team.html#advisory">Advisory Board</a></div>
+            <div class="dropdown" role="menu">
+              <a href="team.html#advisory"   role="menuitem">Advisory Board</a>
+              <a href="team.html#management" role="menuitem">Core Team</a>
+            </div>
           </li>
           <li class="nav-item"><a href="projects.html"      class="nav-link">Projects</a></li>
           <li class="nav-item"><a href="clients.html"       class="nav-link">Clients</a></li>
@@ -41,112 +185,38 @@
     </div>
   </nav>
 
+  <!-- BANNER -->
   <div class="page-banner" style="--banner-bg:url('media/banners/team.png')">
     <div class="container page-banner-inner">
       <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="index.html">Home</a><span class="breadcrumb-sep">›</span><span>Our Team</span>
+        <a href="index.html">Home</a><span class="breadcrumb-sep">&#8250;</span><span>Our People</span>
       </nav>
       <span class="section-label">The People Behind DS</span>
-      <h1>Our Team</h1>
-      <p>Seasoned professionals with decades of combined experience in public health, social development, and organisational management.</p>
+      <h1>Our People</h1>
+      <p>Our strength lies in our people, a curated network of seasoned experts with decades of experience, mobilized as needed around a lean structure built for focused and efficient delivery.</p>
     </div>
   </div>
 
-  <!-- MANAGEMENT TEAM -->
-  <section id="management" style="padding:5rem 0;background:var(--offwhite);">
+  <!-- FOUNDER -->
+  <section class="founder-section">
     <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-label">Leadership</span>
-        <h2>Management Team</h2>
-        <p>Our senior leadership brings together expertise across medicine, public health, management, and development strategy.</p>
-      </div>
-
-      <div class="team-grid">
-
-        <!-- Moazzam -->
-        <div class="team-card fade-in">
-          <div class="team-header">
-            <div class="team-avatar">
-              <img src="media/team/moazzam.jpg" alt="Dr. Moazzam Khalil" onerror="this.outerHTML='<span style=\'font-size:2rem;\'>👨‍⚕️</span>'" />
-            </div>
+      <div class="founder-inner">
+        <div>
+          <img src="media/team/Dr. Moazzam.png" alt="Dr. Moazzam Khalil" class="founder-img" />
+        </div>
+        <div>
+          <div class="founder-qdot">&ldquo;</div>
+          <blockquote class="founder-quote">
+            Dr. Moazzam Khalil built this organization on integrity, purpose, and an unwavering belief in human potential. We don&rsquo;t just honor that legacy &mdash; we are accountable to it.
+          </blockquote>
+          <div class="founder-byline">
+            <div class="founder-byline-line"></div>
             <div>
-              <div class="team-name">Dr. Moazzam Khalil</div>
-              <div class="team-title">Founder &amp; Chief Executive Officer</div>
-              <div class="team-cred">MBBS, MPH</div>
-            </div>
-          </div>
-          <div class="team-body">
-            <p>A physician by training with an MPH, Dr. Moazzam Khalil presents over 25 years of progressive community health and social development accomplishments. He brings creative leadership, programme design and implementation, systems restructuring, technical assistance to provincial health departments, strategic planning, management, and monitoring and evaluation expertise.</p>
-            <p>He has solid community health and development insight with the ability to analyse situations, conceptualise and plan new interventions, and streamline operations. With a keen eye for details, he moves effortlessly across all levels of management and stakeholders.</p>
-            <div class="team-meta">
-              <a href="mailto:moazzam@ds.org.pk" class="team-contact">✉️ moazzam@ds.org.pk</a>
+              <div class="founder-byline-name">Dr. Moazzam Khalil</div>
+              <div class="founder-byline-title">Founder, Development Strategies</div>
             </div>
           </div>
         </div>
-
-        <!-- Ahsan -->
-        <div class="team-card fade-in">
-          <div class="team-header">
-            <div class="team-avatar">
-              <img src="media/team/ahsan.gif" alt="Dr. Ahsan Maqbool Ahmad" onerror="this.outerHTML='<span style=\'font-size:2rem;\'>👨‍⚕️</span>'" />
-            </div>
-            <div>
-              <div class="team-name">Dr. Ahsan Maqbool Ahmad</div>
-              <div class="team-title">Director, Strategies &amp; Programs</div>
-              <div class="team-cred">MBBS, MSc, PhD</div>
-            </div>
-          </div>
-          <div class="team-body">
-            <p>A medical graduate with MSc in Epidemiology and Biostatistics from the Aga Khan University and PhD (Health and Community Services) from the University of Melbourne, Australia. He has worked extensively in project development and management for research, facility-based, and community-based healthcare intervention programmes.</p>
-            <p>His research and consulting areas include infectious diseases (TB, MDR-TB, Avian Flu, disease surveillance), reproductive and maternal and child health, and healthcare systems — covering services utilisation, primary health care, and policy evaluation at district, provincial, and federal levels.</p>
-            <div class="team-meta">
-              <a href="mailto:ahsan@ds.org.pk" class="team-contact">✉️ ahsan@ds.org.pk</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Zulfiqar -->
-        <div class="team-card fade-in">
-          <div class="team-header">
-            <div class="team-avatar">
-              <img src="media/team/zulfiqar.gif" alt="Zulfiqar Haider" onerror="this.outerHTML='<span style=\'font-size:2rem;\'>👨‍💼</span>'" />
-            </div>
-            <div>
-              <div class="team-name">Zulfiqar Haider</div>
-              <div class="team-title">Director, Administration &amp; Finance</div>
-              <div class="team-cred">MBA</div>
-            </div>
-          </div>
-          <div class="team-body">
-            <p>With 34 years of service with the Pakistan Air Force — 30 in uniform followed by four years as a Human Resource consultant — Zulfiqar Haider brings unparalleled experience in personnel policy formulation, organisational restructuring, and administration management.</p>
-            <p>He served at the senior human resource appointment (Assistant Chief of Air Staff – Personnel), where he formulated personnel policies for staffing, recruitment, career progression, and discipline. He subsequently served as Chairman Establishment Review Team, right-sizing the PAF establishment. He later contributed to improving school children's health with the National Commission for Human Development.</p>
-            <div class="team-meta">
-              <a href="mailto:zulfiqar@ds.org.pk" class="team-contact">✉️ zulfiqar@ds.org.pk</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Khalid -->
-        <div class="team-card fade-in">
-          <div class="team-header">
-            <div class="team-avatar">
-              <img src="media/team/khalid.jpg" alt="Dr. Muhammad Khalid" onerror="this.outerHTML='<span style=\'font-size:2rem;\'>👨‍⚕️</span>'" />
-            </div>
-            <div>
-              <div class="team-name">Dr. Muhammad Khalid</div>
-              <div class="team-title">Director, Operations</div>
-              <div class="team-cred">MBBS, MPH (with Distinction, University of Warwick)</div>
-            </div>
-          </div>
-          <div class="team-body">
-            <p>A medical doctor with a Masters in Public Health with distinction from the University of Warwick, UK (2007). He brings more than a decade's experience working with government and private sector, including JICA, GIZ, DFID, UN agencies, and international and national NGOs.</p>
-            <p>His prime areas of research include Health Economics (Economic Evaluations, Health Accounting), Maternal and Child Health (family planning, reproductive health, community case management), Health Systems (services utilisation, quality of care), Nutrition (CMAM, School Health), WASH, and Child Rights. He is affiliated with the Royal Society for Public Health (RSPH), IHEA, and the South Asian Public Health Forum.</p>
-            <div class="team-meta">
-              <a href="mailto:khalid@ds.org.pk" class="team-contact">✉️ khalid@ds.org.pk</a>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
   </section>
@@ -159,55 +229,160 @@
         <h2>Advisory Board</h2>
         <p>Distinguished professionals who provide strategic direction and independent counsel to Development Strategies.</p>
       </div>
+      <div class="people-grid">
 
-      <div class="advisory-grid">
-
-        <div class="advisor-card fade-in">
-          <img src="media/team/wfs.gif" alt="William Frederick Shaw" class="advisor-photo" onerror="this.outerHTML='<div class=\'advisor-avatar\'>🎓</div>'" />
-          <h4>William Frederick Shaw, Dr.PH, MPH</h4>
-          <div class="role">Founder &amp; CEO, Developing Indigenous Resources (DIR), USA</div>
+        <div class="person-card fade-in" onclick="openModal('wfs')">
+          <div class="person-photo-wrap"><img src="media/team/wfs.gif" alt="William Frederick Shaw" /></div>
+          <div class="person-name">William Frederick Shaw</div>
+          <div class="person-role">Dr.PH, MPH &mdash; Founder &amp; CEO, DIR, USA</div>
+          <div class="click-hint">View Profile &#8250;</div>
         </div>
 
-        <div class="advisor-card fade-in">
-          <img src="media/team/dna.gif" alt="Nasim Ashraf" class="advisor-photo" onerror="this.outerHTML='<div class=\'advisor-avatar\'>👨‍⚕️</div>'" />
-          <h4>Nasim Ashraf, MD</h4>
-          <div class="role">Founder &amp; President, DNA Strategies, USA</div>
+        <div class="person-card fade-in" onclick="openModal('dna')">
+          <div class="person-photo-wrap"><img src="media/team/dna.gif" alt="Dr. Nasim Ashraf" /></div>
+          <div class="person-name">Dr. Nasim Ashraf</div>
+          <div class="person-role">MD &mdash; Founder &amp; President, DNA Strategies, USA</div>
+          <div class="click-hint">View Profile &#8250;</div>
         </div>
 
-        <div class="advisor-card fade-in">
-          <img src="media/team/dbw.gif" alt="Douglas Blackwood" class="advisor-photo" onerror="this.outerHTML='<div class=\'advisor-avatar\'>🎓</div>'" />
-          <h4>Douglas Blackwood, MRCP, PhD, MRCPsych</h4>
-          <div class="role">Professor of Psychiatric Genetics, University of Edinburgh</div>
+        <div class="person-card fade-in" onclick="openModal('dbw')">
+          <div class="person-photo-wrap"><img src="media/team/dbw.gif" alt="Douglas Blackwood" /></div>
+          <div class="person-name">Douglas Blackwood</div>
+          <div class="person-role">MRCP, PhD, MRCPsych &mdash; Professor, University of Edinburgh</div>
+          <div class="click-hint">View Profile &#8250;</div>
         </div>
 
-        <div class="advisor-card fade-in">
-          <img src="media/team/jf.gif" alt="Jane Fisher" class="advisor-photo" onerror="this.outerHTML='<div class=\'advisor-avatar\'>🎓</div>'" />
-          <h4>Jane Fisher, BSc, PhD</h4>
-          <div class="role">Professor, Monash University, Australia</div>
+        <div class="person-card fade-in" onclick="openModal('jf')">
+          <div class="person-photo-wrap"><img src="media/team/jf.gif" alt="Jane Fisher" /></div>
+          <div class="person-name">Jane Fisher</div>
+          <div class="person-role">BSc, PhD &mdash; Professor, Monash University, Australia</div>
+          <div class="click-hint">View Profile &#8250;</div>
         </div>
 
-        <div class="advisor-card fade-in">
-          <img src="media/team/tariq.gif" alt="Dr. Tariq H Cheema" class="advisor-photo" onerror="this.outerHTML='<div class=\'advisor-avatar\'>🌐</div>'" />
-          <h4>Dr. Tariq H Cheema, MD</h4>
-          <div class="role">Founder &amp; CEO, World Congress of Muslim Philanthropists, USA</div>
+        <div class="person-card fade-in" onclick="openModal('tariq')">
+          <div class="person-photo-wrap"><img src="media/team/tariq.gif" alt="Dr. Tariq H Cheema" /></div>
+          <div class="person-name">Dr. Tariq H Cheema</div>
+          <div class="person-role">MD &mdash; Founder &amp; CEO, World Congress of Muslim Philanthropists</div>
+          <div class="click-hint">View Profile &#8250;</div>
         </div>
 
-        <div class="advisor-card fade-in">
-          <img src="media/team/ph.gif" alt="Peter Hill" class="advisor-photo" onerror="this.outerHTML='<div class=\'advisor-avatar\'>🎓</div>'" />
-          <h4>Peter Hill, MBBS, BA, FAFPHM, PhD</h4>
-          <div class="role">Associate Professor, SPH, The University of Queensland, Australia</div>
+        <div class="person-card fade-in" onclick="openModal('ph')">
+          <div class="person-photo-wrap"><img src="media/team/ph.gif" alt="Peter Hill" /></div>
+          <div class="person-name">Peter Hill</div>
+          <div class="person-role">MBBS, FAFPHM, PhD &mdash; Assoc. Professor, University of Queensland</div>
+          <div class="click-hint">View Profile &#8250;</div>
         </div>
 
-        <div class="advisor-card fade-in">
-          <img src="media/team/hashem.gif" alt="Abul Hashem" class="advisor-photo" onerror="this.outerHTML='<div class=\'advisor-avatar\'>🌐</div>'" />
-          <h4>Abul Hashem, BS, MA</h4>
-          <div class="role">President &amp; CEO, Global Development Support, USA</div>
+        <div class="person-card fade-in" onclick="openModal('hashem')">
+          <div class="person-photo-wrap"><img src="media/team/hashem.gif" alt="Abul Hashem" /></div>
+          <div class="person-name">Abul Hashem</div>
+          <div class="person-role">BS, MA &mdash; President &amp; CEO, Global Development Support, USA</div>
+          <div class="click-hint">View Profile &#8250;</div>
         </div>
 
       </div>
     </div>
   </section>
 
+  <!-- CORE TEAM -->
+  <section id="management" style="padding:5rem 0;background:var(--offwhite);">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label">Leadership</span>
+        <h2>Core Team</h2>
+        <p>Our experienced leadership drives every assignment with strategic clarity and on-ground accountability.</p>
+      </div>
+      <div class="people-grid">
+
+        <div class="person-card fade-in" onclick="openModal('usman')">
+          <div class="person-photo-wrap"><img src="media/team/M Usman Khan (1).png" alt="Mohammad Usman Khan" /></div>
+          <div class="person-name">Mohammad Usman Khan</div>
+          <div class="person-role">Managing Partner<br/>Chief Executive Officer</div>
+          <div class="click-hint">View Profile &#8250;</div>
+        </div>
+
+        <div class="person-card fade-in" onclick="openModal('rahmeen')">
+          <div class="person-photo-wrap"><img src="media/team/Rahmeen Khalil.png" alt="Rahmeen Khalil" /></div>
+          <div class="person-name">Rahmeen Khalil</div>
+          <div class="person-role">Managing Partner<br/>Visual Communications Expert</div>
+          <div class="click-hint">View Profile &#8250;</div>
+        </div>
+
+        <div class="person-card fade-in" onclick="openModal('ali')">
+          <div class="person-photo-wrap"><img src="media/team/Ali Shoaib.jpeg" alt="Ali Shoaib" /></div>
+          <div class="person-name">Ali Shoaib</div>
+          <div class="person-role">M&amp;E Expert</div>
+          <div class="click-hint">View Profile &#8250;</div>
+        </div>
+
+        <div class="person-card fade-in" onclick="openModal('mariam')">
+          <div class="person-photo-wrap"><img src="media/team/Dr. Mariam Ashraf.jpg.jpeg" alt="Dr. Mariam Ashraf" /></div>
+          <div class="person-name">Dr. Mariam Ashraf</div>
+          <div class="person-role">Public Health Expert</div>
+          <div class="click-hint">View Profile &#8250;</div>
+        </div>
+
+        <div class="person-card fade-in" onclick="openModal('arshad')">
+          <div class="person-photo-wrap"><img src="media/team/Arshad Sb..jpg" alt="Mohammad Arshad" /></div>
+          <div class="person-name">Mohammad Arshad</div>
+          <div class="person-role">Development Expert</div>
+          <div class="click-hint">View Profile &#8250;</div>
+        </div>
+
+        <div class="person-card fade-in" onclick="openModal('samina')">
+          <div class="person-photo-wrap"><img src="media/team/Samina.jpeg" alt="Samina Altaf" /></div>
+          <div class="person-name">Samina Altaf</div>
+          <div class="person-role">Public Health Expert<br/>Provincial Coordinator Sindh</div>
+          <div class="click-hint">View Profile &#8250;</div>
+        </div>
+
+        <div class="person-card fade-in" onclick="openModal('muslim')">
+          <div class="person-photo-wrap"><img src="media/team/Muslim Qureshi.jpeg" alt="Muslim Qureshi" /></div>
+          <div class="person-name">Muslim Qureshi</div>
+          <div class="person-role">Project Officer, Sindh</div>
+          <div class="click-hint">View Profile &#8250;</div>
+        </div>
+
+        <div class="person-card fade-in" onclick="openModal('umair')">
+          <div class="person-photo-wrap"><img src="media/team/Umair.jpeg" alt="M. Umair Muzaffar" /></div>
+          <div class="person-name">M. Umair Muzaffar</div>
+          <div class="person-role">Provincial Coordinator Punjab</div>
+          <div class="click-hint">View Profile &#8250;</div>
+        </div>
+
+        <div class="person-card fade-in" onclick="openModal('saira')">
+          <div class="person-photo-wrap"><img src="media/team/Saira Bano.png" alt="Saira Bano" /></div>
+          <div class="person-name">Saira Bano</div>
+          <div class="person-role">Provincial Coordinator GB</div>
+          <div class="click-hint">View Profile &#8250;</div>
+        </div>
+
+        <div class="person-card fade-in" onclick="openModal('noshad')">
+          <div class="person-photo-wrap"><img src="media/team/Noshad.jpeg" alt="Noshad Wazir" /></div>
+          <div class="person-name">Noshad Wazir</div>
+          <div class="person-role">Provincial Coordinator KPK</div>
+          <div class="click-hint">View Profile &#8250;</div>
+        </div>
+
+        <div class="person-card fade-in" onclick="openModal('hanan')">
+          <div class="person-photo-wrap"><div class="person-photo-placeholder">&#128100;</div></div>
+          <div class="person-name">Abdul Hanan</div>
+          <div class="person-role">Provincial Coordinator Balochistan</div>
+          <div class="click-hint">View Profile &#8250;</div>
+        </div>
+
+        <div class="person-card fade-in" onclick="openModal('haseeb')">
+          <div class="person-photo-wrap"><img src="media/team/Haseeb Lodhi.jpg" alt="Abdul Haseeb Lodhi" /></div>
+          <div class="person-name">Abdul Haseeb Lodhi</div>
+          <div class="person-role">Manager Finance</div>
+          <div class="click-hint">View Profile &#8250;</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
   <section class="cta-banner">
     <div class="container cta-banner-inner">
       <h2>Work With Our Expert Team</h2>
@@ -223,24 +398,169 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <div class="nav-logo"><img src="media/logo-1.png" alt="Development Strategies Associates" onerror="this.style.display='none'" />
-          <div class="logo-text"><strong>Development Strategies</strong><span>Associates</span></div></div>
+          <div class="nav-logo">
+            <img src="media/logo-1.png" alt="Development Strategies Associates" onerror="this.style.display='none'" />
+            <div class="logo-text"><strong>Development Strategies</strong><span>Associates</span></div>
+          </div>
           <p>Improving human development indicators through systems strengthening and enhancing equitable access to opportunities and social sector services.</p>
           <div class="footer-contact">
-            <div class="footer-contact-item"><span class="icon">📍</span> Office 2B, Ascon Height-II, Block C, Main Soan Avenue, Soan Garden, Islamabad</div>
-            <div class="footer-contact-item"><span class="icon">📞</span> +92 (321) 500 8091</div>
-            <div class="footer-contact-item"><span class="icon">✉️</span> <a href="mailto:info@ds.org.pk">info@ds.org.pk</a></div>
+            <div class="footer-contact-item"><span class="icon">&#128205;</span> Office 2B, Ascon Height-II, Block C, Main Soan Avenue, Soan Garden, Islamabad</div>
+            <div class="footer-contact-item"><span class="icon">&#128222;</span> +92 (321) 500 8091</div>
+            <div class="footer-contact-item"><span class="icon">&#9993;&#65039;</span> <a href="mailto:info@ds.org.pk">info@ds.org.pk</a></div>
           </div>
         </div>
-        <div class="footer-col"><h5>Organisation</h5><ul class="footer-links"><li><a href="about.html">About Us</a></li><li><a href="team.html">Management Team</a></li><li><a href="team.html#advisory">Advisory Board</a></li><li><a href="clients.html">Our Clients</a></li></ul></div>
+        <div class="footer-col"><h5>Organisation</h5><ul class="footer-links"><li><a href="about.html">About Us</a></li><li><a href="team.html">Our People</a></li><li><a href="team.html#advisory">Advisory Board</a></li><li><a href="clients.html">Our Clients</a></li></ul></div>
         <div class="footer-col"><h5>Services</h5><ul class="footer-links"><li><a href="domains.html">Our Domains</a></li><li><a href="expertise.html">Expertise</a></li><li><a href="projects.html">Projects</a></li><li><a href="publications.html">Publications</a></li><li><a href="opportunities.html">Opportunities</a></li></ul></div>
         <div class="footer-col"><h5>Contact</h5><ul class="footer-links"><li><a href="contact.html">Contact Us</a></li><li><a href="mailto:info@ds.org.pk">info@ds.org.pk</a></li></ul></div>
       </div>
-      <div class="footer-bottom"><span>© 2026 Development Strategies. All Rights Reserved.</span><div style="display:flex;gap:1.5rem;"><a href="contact.html">Contact</a></div></div>
+      <div class="footer-bottom"><span>&copy; 2026 Development Strategies. All Rights Reserved.</span><div style="display:flex;gap:1.5rem;"><a href="contact.html">Contact</a></div></div>
     </div>
   </footer>
 
-  <button id="back-to-top" aria-label="Back to top">↑</button>
+  <!-- POPUP MODAL -->
+  <div id="peopleModal" class="people-modal" role="dialog" aria-modal="true" aria-labelledby="modalName">
+    <div class="modal-card">
+      <button class="modal-close-btn" onclick="closeModal()" aria-label="Close">&times;</button>
+      <div class="modal-top">
+        <div id="modalPhotoWrap"></div>
+        <div>
+          <div id="modalName" class="modal-name"></div>
+          <div id="modalDesig" class="modal-desig"></div>
+          <div id="modalEdu" class="modal-edu"></div>
+        </div>
+      </div>
+      <div id="modalBio" class="modal-bio"></div>
+    </div>
+  </div>
+
+  <button id="back-to-top" aria-label="Back to top">&#8593;</button>
   <script src="js/main.js"></script>
+  <script>
+  const members = {
+    wfs: {
+      name:'William Frederick Shaw', desig:'Founder &amp; CEO, Developing Indigenous Resources (DIR), USA', edu:'Dr.PH &mdash; University of California, Berkeley',
+      photo:'media/team/wfs.gif',
+      bio:`<p>Formally educated in Ireland, England, and the US with majors in Business, Education, Political Philosophy, English Literature, and Public Health, Dr. Shaw acquired a doctorate in Public Health from The University of California at Berkeley.</p><p>For over thirty-seven years he has worked in India, Pakistan, Ireland, Philippines, Germany, England, Swaziland, Papua New Guinea, Indonesia, The Gambia, The Sudan, Somalia, Solomon Islands, and more. He has been developing management systems, designing and managing projects in developing countries, setting organizational goals and objectives, developing organizational rules, procedures and personnel policies, welding diverse staff members into high performance teams, designing and conducting epidemiological survey research, and teaching at universities.</p><p>Currently heading Developing Indigenous Resources, a non-profit corporation incorporated in California, USA. He has been Member of the President's Task Force for Human Development Pakistan and Member of the faculties of Health Science and Management at The Centre for Higher Education, Diablo Valley College (both in California) as well as the University of Phoenix.</p><p><strong>Awards:</strong> Citizen of The Year Award &mdash; UN Association of San Francisco (2010); US Purpose Prize Fellow for Slum project in Punjab, India (2009); Appreciation from the Pakistani Government for relief work after the October earthquake (2005); Excellence from the American College of Physicians for designing APPNA SEHAT program in Pakistan (2002).</p>`
+    },
+    dna: {
+      name:'Dr. Nasim Ashraf', desig:'Founder &amp; President, DNA Strategies, USA', edu:'MD &mdash; Khyber Medical College',
+      photo:'media/team/dna.gif',
+      bio:`<p>Dr. Ashraf has an in-depth understanding of issues of the developing world and has been passionately contributing towards resolving them. He conceived the idea of improving human development as the key factor in Pakistan's development, convinced the then government and established President's Task Force on Human Development in 2001, and served as the Team Leader.</p><p>Afterwards he served as the Chairman of the National Commission for Human Development (NCHD) Pakistan and a Minister of State. He was also appointed as Chairman Pakistan Cricket Board by the President of Pakistan in October 2006 and was elected to the Chairmanship of the Asian Cricket Council in 2008.</p><p>He has been Member of APPNA Advisory Task Force to Ministry of Health, Government of Pakistan (1982), Co-Chair Human Development Foundation of North America (1999), Chairman APPNA-SEHAT (1989&ndash;99), President Douglas County Medical Society (1992), and President Association of Pakistani Physicians of North America (1987&ndash;88).</p><p><strong>Awards:</strong> Sitara-I-Imtiaz by President of Pakistan (2006); UNESCO International Award for Literacy (2006); Gold Medal for Most Outstanding Graduate of Khyber Medical College; Lifetime Achievement Award by Khyber Medical College Alumni Association of North America (2004); American College of Physicians Linda Rosenthal Award (2002).</p>`
+    },
+    dbw: {
+      name:'Douglas Blackwood', desig:'Professor of Psychiatric Genetics, University of Edinburgh', edu:'MRCP, PhD &mdash; University of Edinburgh; MRCPsych; Fellow of Royal College of Psychiatrists',
+      photo:'media/team/dbw.gif',
+      bio:`<p>Professor Blackwood earned his membership from Royal College of Physicians (MRCP), PhD from University of Edinburgh and membership from Royal College of Psychiatrists (MRCPsych) and is elected Fellow of Royal College of Psychiatrists, Royal College of Physicians and the Royal Society of Edinburgh.</p><p>He has been Member of Scientific (Clinical) Staff, MRC Brain Metabolism Unit, University of Edinburgh; Registrar in Psychiatry, Maudsley Hospital and Institute of Psychiatry, London; and Senior Lecturer and Reader Psychiatry, University of Edinburgh.</p><p>He is leading the Edinburgh psychiatric genetics group which has established a Tissue Bank of DNA samples and diagnostic information from over 7,000 patients and their relatives with major mental illnesses. His group has been mapping genes disrupted at translocation breakpoints in patients with schizophrenia or bipolar disorder, highlighting a possible role for the genes DISC1, PDE4, GRIK4, NPAS3 and ABCA13 contributing to risk of major psychiatric disorders.</p>`
+    },
+    jf: {
+      name:'Jane Fisher', desig:"Jean Hailes Professor of Women's Mental Health, Monash University, Australia", edu:'BSc, PhD',
+      photo:'media/team/jf.gif',
+      bio:`<p>Jane Fisher is Jean Hailes Professor of Women's Mental Health in the School of Public Health and Preventive Medicine at Monash University and a Professorial Fellow at the University of Melbourne.</p><p>She has longstanding interests in the links between reproductive health and mental health from adolescence to mid-life, in particular related to fertility, conception, pregnancy, birth and the postpartum period.</p><p>She is Honorary Clinical Psychologist at Melbourne IVF and Chairs the Psychosocial and Epidemiological Research in Reproduction Committee at the Royal Women's Hospital in Melbourne.</p>`
+    },
+    tariq: {
+      name:'Dr. Tariq H Cheema', desig:'Founder &amp; CEO, World Congress of Muslim Philanthropists, USA', edu:'MD &mdash; University of Istanbul; Certificate in Philanthropy, Loyola University Chicago',
+      photo:'media/team/tariq.gif',
+      bio:`<p>Tariq H. Cheema, a renowned social innovator and philanthropist, has devoted his life to making the world a peaceful, equitable, and sustainable place for all. He is the founder of the World Congress of Muslim Philanthropists, a global network of affluent individuals, foundations and socially conscious corporations dedicated to advancing efficient and accountable giving.</p><p>He is one of the Rockefeller Foundation's prestigious Next Generation Leadership Fellows. His professional experience lies in the areas of strategic philanthropy, corporate giving, nonprofit governance and crisis management. Dr. Cheema ranks among the 500 most influential Muslims impacting the world today.</p>`
+    },
+    ph: {
+      name:'Peter Hill', desig:'Associate Professor, School of Public Health, University of Queensland, Australia', edu:'MBBS, BA, FAFPHM, PhD',
+      photo:'media/team/ph.gif',
+      bio:`<p>Peter Hill is a Public Health Physician and academic in International and Indigenous health. His key research interests are in international health policy and its translation into health systems and programs.</p><p>His doctoral studies examined the evolution and application of international health policy during the early health sector reforms in Cambodia, focusing in particular on the Health Coverage Plan, the evolution of the Sector-Wide Approach for health development and the implications of international policy on reproductive health programs.</p><p>He has extensive international experience in Nigeria, Cambodia, Lao PDR and Thailand, Mongolia, Papua New Guinea and Fiji, and has consulted for AusAID, the Australian Red Cross, the German Agency for Technical Cooperation (GTZ) and WHO.</p>`
+    },
+    hashem: {
+      name:'Abul Hashem', desig:'President &amp; CEO, Global Development Support, USA', edu:'BS, MA',
+      photo:'media/team/hashem.gif',
+      bio:`<p>A result-oriented senior management and business development executive with 35 years of experience in the design, implementation, and technical support of international health programs in about 50 countries. Strategic thinker, innovative program designer, creative problem solver, skillful negotiator and excellent communicator.</p><p>Highly successful in new business development with USAID, CDC, Global Fund, multi-national banks and foundations. Proven ability to mobilize, motivate and manage multi-disciplinary technical teams for business development and client-focused project management.</p><p>Expert consensus and team builder with outstanding leadership, diplomatic, and organizational skills. Proven ability in crisis management, prudent judgment and cultural adaptability. Expert in creating and capitalizing on networks, management of stakeholders and relationships with donors and partners, and capacity building.</p>`
+    },
+    usman: {
+      name:'Mohammad Usman Khan', desig:'Managing Partner, Chief Executive Officer',
+      edu:'(Hons.) Development Economics (PK) &middot; Certified Specialist Business Strategy (USA) &middot; Certified Specialist Data Analytics in Public Sector (USA) &middot; Aviation and Commercial Flying (PK)',
+      photo:'media/team/M Usman Khan (1).png',
+      bio:`<p>Usman has a combination of strategic depth and cross-sector experience. Grounded in a background in Development Economics and various specialist trainings local and abroad, his career has been defined by one consistent thread of building systems that work and deliver.</p><p>Over the past decade, Usman has worked across development, healthcare, business and aviation not as a generalist, but as a systems builder. He spent years working directly alongside the leadership of Development Strategies Associates before taking the role of CEO, learning the architecture of impact-driven project delivery from the inside.</p><p>Alongside this, he designed operational and management systems from the ground up for organizations as diverse as non-profits like Al-Jariah Foundation, private healthcare setups such as Orthoflex chain of clinics, and digital innovation organizations like Flip-it and EW. In aviation, he contributed to high-stakes projects in security, safety and accident assessment for civil aviation where precision and accountability are non-negotiable.</p><p>Using this multi-sector lens to people-centric human development and to every mandate the organization takes on, ensuring that strategy is not just designed but delivered, and that impact is not just intended but measured.</p>`
+    },
+    rahmeen: {
+      name:'Rahmeen Khalil', desig:'Managing Partner, Visual Communications Expert', edu:'(Hons) Visual Communication Design (PK)',
+      photo:'media/team/Rahmeen Khalil.png',
+      bio:`<p>With a background in Visual Communication Design and years of cross-sector experience, Rahmeen brings a rare combination of creative precision and strategic thinking to everything she builds. Her work sits at the intersection of design, communication, and impact, translating complex development narratives into visuals that inform, engage, and move people to act.</p><p>At Development Strategies Associates, she leads all communications design from project reports and data visualizations to social media and donor-facing materials, ensuring that the work delivered is not just done well, but seen and understood.</p><p>Beyond development, she has built and shaped the visual identity of organizations across two countries, contributing to SpotlightGB in the UK, and delivering design and branding work for Human Design Studios, Digitalix Solutions, and Brandliners in Pakistan. As a consultant in user experience and design, she has helped businesses rethink how they communicate with their audiences from the ground up.</p>`
+    },
+    ali: {
+      name:'Ali Shoaib', desig:'M&amp;E Expert', edu:'MSPH, IR',
+      photo:'media/team/Ali Shoaib.jpeg',
+      bio:`<p>With over 25 years of experience in effectively managing and excelling in various projects, as well as overseeing monitoring and evaluations, research studies, knowledge management, impact measurement, and learning systems within both international and national non-profit organizations, Ali has honed a solutions-oriented approach to his work.</p><p>In his role, he successfully led Monitoring and Evaluation teams in the implementation of result-based monitoring frameworks. He has spearheaded the training of M&amp;E professionals and enumerators for 24 large-scale survey and research studies throughout Pakistan.</p><p>He has been instrumental in the development and execution of policies and tools dedicated to knowledge management, playing a pivotal role in the establishment of centralized M&amp;E systems to ensure optimal efficiency and effectiveness in project delivery.</p>`
+    },
+    mariam: {
+      name:'Dr. Mariam Ashraf', desig:'Public Health Expert', edu:'PHD, MPH, MBBS',
+      photo:'media/team/Dr. Mariam Ashraf.jpg.jpeg',
+      bio:`<p>With over 14 years of experience in research, proposal development, grant writing, data collection, analysis, and report writing, Dr. Mariam possesses a comprehensive background in population health, family planning initiatives, maternal and child health, and nutrition.</p><p>She also has extensive expertise in project management, qualitative data collection, project implementation, and analysis. Over the years she has demonstrated strong analytical, synthesis, and report-writing skills, along with the operational ability to manage projects effectively.</p>`
+    },
+    arshad: {
+      name:'Mohammad Arshad', desig:'Development Expert', edu:'',
+      photo:'media/team/Arshad Sb..jpg',
+      bio:`<p>Muhammad Arshad is a senior development professional specializing in humanitarian action, institutional strengthening, strategic planning, and program management. With over 30 years of professional experience, including more than 15 years in senior international leadership roles, he advises governments, donors, NGOs, and development partners on program design, organizational strengthening, governance, management systems, field survey, partnership systems, accountability and complaint systems, emergency preparedness and recovery programming.</p><p>He has led complex, multi-sector initiatives across Asia, Middle-East and Africa and brings extensive experience working with EU, KfW, USAID/BHA, BMZ, FCDO, UN agencies, and other international development partners.</p>`
+    },
+    samina: {
+      name:'Samina Altaf', desig:'Public Health Expert &mdash; Provincial Coordinator Sindh', edu:'MPH',
+      photo:'media/team/Samina.jpeg',
+      bio:`<p>A highly experienced Public Health and Development Professional with over 25 years of expertise in public health, project management, research, monitoring and evaluation, surveys, training, and community development.</p><p>Proven track record of leading large-scale health and social development projects with national and international organizations, including consultancy firms, NGOs, UN agencies, and research institutions. Skilled in project planning and implementation, field operations, stakeholder coordination, team leadership, and capacity building, with extensive experience in immunization, nutrition, maternal and child health, and public health research across Pakistan.</p>`
+    },
+    muslim: {
+      name:'Muslim Qureshi', desig:'Project Officer, Sindh', edu:'MBA, MASocio',
+      photo:'media/team/Muslim Qureshi.jpeg',
+      bio:`<p>With nearly two decades of experience in the development sector, Mohammad Muslim Qureshi brings deep field expertise in program management, capacity building, and community mobilization. From leading large-scale MNCH and Family Planning programs at Greenstar Social Marketing to managing TVET initiatives with CARE International and SRSO, his career spans some of Pakistan's most impactful development programs across Interior Sindh.</p><p>A seasoned people-leader with an MBA from SZABIST, Muslim combines strong operational discipline with an on-ground understanding of rural communities, social behavior, and stakeholder dynamics, making him equally effective in the field and at the management table.</p>`
+    },
+    umair: {
+      name:'M. Umair Muzaffar', desig:'Provincial Coordinator Punjab', edu:'',
+      photo:'media/team/Umair.jpeg',
+      bio:`<p>M. Umair Muzaffar is a dedicated Coordination Officer with over 6 years of professional experience at Development Strategies Associates. He specializes in project coordination, administrative management, stakeholder engagement, and operational support.</p><p>Throughout his career, he has contributed to the successful planning and implementation of development projects by ensuring effective communication, efficient coordination, and timely execution of activities. Committed to professionalism and continuous growth, he strives to deliver high-quality results and support impactful development initiatives.</p>`
+    },
+    saira: {
+      name:'Saira Bano', desig:'Provincial Coordinator GB', edu:'MSIR &middot; Certified Accredited Mediator (PMA)',
+      photo:'media/team/Saira Bano.png',
+      bio:`<p>A passionate development professional, researcher, and accredited mediator with extensive experience in grassroots mobilization, program management, and policy advocacy. Currently serving as Coordinator at DS and Youth Forum Nagar, she advocates for inclusive development and sustainable community solutions.</p><p>As Manager of NKRSP and President of Young Women Development Organization, Nagar, she successfully designs and implements initiatives for women and youth.</p>`
+    },
+    noshad: {
+      name:'Noshad Wazir', desig:'Provincial Coordinator KPK', edu:'',
+      photo:'media/team/Noshad.jpeg',
+      bio:`<p>With over 14 years of progressive leadership in Pakistan's development sector, Noshad Wazir brings rare depth of experience across Khyber Pakhtunkhwa and the merged districts. His work spans some of the region's most demanding mandates, from leading WHO's provincial health evaluations in coordination with the Director General Health KP, to managing IOM consultancies across Orakzai and Kurram districts, to overseeing a PKR 219 million programme portfolio under SRSP/PPAF.</p><p>Noshad has delivered for some of the world's most respected development organizations including IOM, WHO, UNICEF, UNHCR, SRSP-PPAF, KfW, and the Bill &amp; Melinda Gates Foundation. His on-ground leadership of COVID-19 emergency response operations across five districts further reflects his ability to perform where it matters most. Fluent in Pashto, Urdu, and English, and proficient in digital data tools including KoBo Collect and Survey CTO.</p>`
+    },
+    hanan: {
+      name:'Abdul Hanan', desig:'Provincial Coordinator Balochistan', edu:'M.Ed, MIR, MA Pashto, BA Econ &amp; Socio',
+      photo:null,
+      bio:`<p>Abdul Hannan Barech is a seasoned development professional with extensive experience across project management, monitoring and evaluation, third-party validation, and emergency response in Balochistan, one of Pakistan's most operationally demanding provinces.</p><p>His career spans some of the sector's most reputable organizations, including USAID-funded programmes, UNICEF, UNHCR, and the Pakistan Red Crescent Society. As Project Manager for the Balochistan Social Development Program, he led daily operations, managed stakeholder coordination, oversaw risk and security compliance, and delivered interim and final programme reports.</p><p>Certified in Disaster Response, Psychosocial Support, and Gender-Based Violence response. Fluent in English, Urdu, Pashto, and Brahvi, he combines deep provincial knowledge with the communication range to operate effectively across communities, government, and international partners alike.</p>`
+    },
+    haseeb: {
+      name:'Abdul Haseeb Lodhi', desig:'Manager Finance', edu:'B. Commerce &middot; ACMA &middot; CGMA (UK) &middot; Member IMA (USA)',
+      photo:'media/team/Haseeb Lodhi.jpg',
+      bio:`<p>Mr. Haseeb Shaukat Lodhi is an accomplished financial management professional with over 15 years of progressive experience in financial management, accounting, grants management, compliance, internal controls, project finance, budgeting, human resources, operations, logistics, information technology, and enterprise risk management.</p><p>He worked with The Asia Foundation (TAF), where he was responsible for grants and financial management operations. Subsequently, he joined the Trust for Democratic Education and Accountability (TDEA), where he held progressively senior positions in finance, grants management, donor reporting, contracts management, and project development.</p>`
+    }
+  };
+
+  function openModal(id) {
+    const m = members[id];
+    if (!m) return;
+    const photoWrap = document.getElementById('modalPhotoWrap');
+    photoWrap.innerHTML = m.photo
+      ? `<img src="${m.photo}" alt="${m.name}" class="modal-photo" />`
+      : `<div class="modal-photo-placeholder">&#128100;</div>`;
+    document.getElementById('modalName').innerHTML = m.name;
+    document.getElementById('modalDesig').innerHTML = m.desig;
+    document.getElementById('modalEdu').innerHTML = m.edu;
+    document.getElementById('modalBio').innerHTML = m.bio;
+    document.getElementById('peopleModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('peopleModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('peopleModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+  });
+  </script>
 </body>
 </html>

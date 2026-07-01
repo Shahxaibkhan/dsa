@@ -1,0 +1,246 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Meet the Development Strategies leadership team and advisory board — experienced professionals in public health, social development, and management." />
+  <title>Our Team | Development Strategies</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="media/logo-1.png" type="image/png" />
+</head>
+<body>
+
+  <div class="nav-overlay"></div>
+  <nav class="navbar page-nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+          <img src="media/logo-1.png" alt="Development Strategies Associates" onerror="this.style.display='none'" />
+          <div class="logo-text"><strong>Development Strategies</strong><span>Associates</span></div>
+        </a>
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="index.html"         class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="about.html"         class="nav-link">About</a></li>
+          <li class="nav-item"><a href="domains.html"       class="nav-link">Domains</a></li>
+          <li class="nav-item"><a href="expertise.html"     class="nav-link">Expertise</a></li>
+          <li class="nav-item">
+            <span class="nav-link active" tabindex="0">Team <span class="chevron">▾</span></span>
+            <div class="dropdown"><a href="team.html#management">Management Team</a><a href="team.html#advisory">Advisory Board</a></div>
+          </li>
+          <li class="nav-item"><a href="projects.html"      class="nav-link">Projects</a></li>
+          <li class="nav-item"><a href="clients.html"       class="nav-link">Clients</a></li>
+          <li class="nav-item"><a href="publications.html"  class="nav-link">Publications</a></li>
+          <li class="nav-item"><a href="opportunities.html" class="nav-link">Opportunities</a></li>
+          <li class="nav-item"><a href="contact.html"       class="nav-link nav-cta">Contact Us</a></li>
+        </ul>
+        <button class="hamburger" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="page-banner" style="--banner-bg:url('media/banners/team.png')">
+    <div class="container page-banner-inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a><span class="breadcrumb-sep">›</span><span>Our Team</span>
+      </nav>
+      <span class="section-label">The People Behind DS</span>
+      <h1>Our Team</h1>
+      <p>Seasoned professionals with decades of combined experience in public health, social development, and organisational management.</p>
+    </div>
+  </div>
+
+  <!-- MANAGEMENT TEAM -->
+  <section id="management" style="padding:5rem 0;background:var(--offwhite);">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label">Leadership</span>
+        <h2>Management Team</h2>
+        <p>Our senior leadership brings together expertise across medicine, public health, management, and development strategy.</p>
+      </div>
+
+      <div class="team-grid">
+
+        <!-- Moazzam -->
+        <div class="team-card fade-in">
+          <div class="team-header">
+            <div class="team-avatar">
+              <img src="media/team/moazzam.jpg" alt="Dr. Moazzam Khalil" onerror="this.outerHTML='<span style=\'font-size:2rem;\'>👨‍⚕️</span>'" />
+            </div>
+            <div>
+              <div class="team-name">Dr. Moazzam Khalil</div>
+              <div class="team-title">Founder &amp; Chief Executive Officer</div>
+              <div class="team-cred">MBBS, MPH</div>
+            </div>
+          </div>
+          <div class="team-body">
+            <p>A physician by training with an MPH, Dr. Moazzam Khalil presents over 25 years of progressive community health and social development accomplishments. He brings creative leadership, programme design and implementation, systems restructuring, technical assistance to provincial health departments, strategic planning, management, and monitoring and evaluation expertise.</p>
+            <p>He has solid community health and development insight with the ability to analyse situations, conceptualise and plan new interventions, and streamline operations. With a keen eye for details, he moves effortlessly across all levels of management and stakeholders.</p>
+            <div class="team-meta">
+              <a href="mailto:moazzam@ds.org.pk" class="team-contact">✉️ moazzam@ds.org.pk</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ahsan -->
+        <div class="team-card fade-in">
+          <div class="team-header">
+            <div class="team-avatar">
+              <img src="media/team/ahsan.gif" alt="Dr. Ahsan Maqbool Ahmad" onerror="this.outerHTML='<span style=\'font-size:2rem;\'>👨‍⚕️</span>'" />
+            </div>
+            <div>
+              <div class="team-name">Dr. Ahsan Maqbool Ahmad</div>
+              <div class="team-title">Director, Strategies &amp; Programs</div>
+              <div class="team-cred">MBBS, MSc, PhD</div>
+            </div>
+          </div>
+          <div class="team-body">
+            <p>A medical graduate with MSc in Epidemiology and Biostatistics from the Aga Khan University and PhD (Health and Community Services) from the University of Melbourne, Australia. He has worked extensively in project development and management for research, facility-based, and community-based healthcare intervention programmes.</p>
+            <p>His research and consulting areas include infectious diseases (TB, MDR-TB, Avian Flu, disease surveillance), reproductive and maternal and child health, and healthcare systems — covering services utilisation, primary health care, and policy evaluation at district, provincial, and federal levels.</p>
+            <div class="team-meta">
+              <a href="mailto:ahsan@ds.org.pk" class="team-contact">✉️ ahsan@ds.org.pk</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Zulfiqar -->
+        <div class="team-card fade-in">
+          <div class="team-header">
+            <div class="team-avatar">
+              <img src="media/team/zulfiqar.gif" alt="Zulfiqar Haider" onerror="this.outerHTML='<span style=\'font-size:2rem;\'>👨‍💼</span>'" />
+            </div>
+            <div>
+              <div class="team-name">Zulfiqar Haider</div>
+              <div class="team-title">Director, Administration &amp; Finance</div>
+              <div class="team-cred">MBA</div>
+            </div>
+          </div>
+          <div class="team-body">
+            <p>With 34 years of service with the Pakistan Air Force — 30 in uniform followed by four years as a Human Resource consultant — Zulfiqar Haider brings unparalleled experience in personnel policy formulation, organisational restructuring, and administration management.</p>
+            <p>He served at the senior human resource appointment (Assistant Chief of Air Staff – Personnel), where he formulated personnel policies for staffing, recruitment, career progression, and discipline. He subsequently served as Chairman Establishment Review Team, right-sizing the PAF establishment. He later contributed to improving school children's health with the National Commission for Human Development.</p>
+            <div class="team-meta">
+              <a href="mailto:zulfiqar@ds.org.pk" class="team-contact">✉️ zulfiqar@ds.org.pk</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Khalid -->
+        <div class="team-card fade-in">
+          <div class="team-header">
+            <div class="team-avatar">
+              <img src="media/team/khalid.jpg" alt="Dr. Muhammad Khalid" onerror="this.outerHTML='<span style=\'font-size:2rem;\'>👨‍⚕️</span>'" />
+            </div>
+            <div>
+              <div class="team-name">Dr. Muhammad Khalid</div>
+              <div class="team-title">Director, Operations</div>
+              <div class="team-cred">MBBS, MPH (with Distinction, University of Warwick)</div>
+            </div>
+          </div>
+          <div class="team-body">
+            <p>A medical doctor with a Masters in Public Health with distinction from the University of Warwick, UK (2007). He brings more than a decade's experience working with government and private sector, including JICA, GIZ, DFID, UN agencies, and international and national NGOs.</p>
+            <p>His prime areas of research include Health Economics (Economic Evaluations, Health Accounting), Maternal and Child Health (family planning, reproductive health, community case management), Health Systems (services utilisation, quality of care), Nutrition (CMAM, School Health), WASH, and Child Rights. He is affiliated with the Royal Society for Public Health (RSPH), IHEA, and the South Asian Public Health Forum.</p>
+            <div class="team-meta">
+              <a href="mailto:khalid@ds.org.pk" class="team-contact">✉️ khalid@ds.org.pk</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ADVISORY BOARD -->
+  <section id="advisory" style="padding:5rem 0;background:var(--white);">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label">Strategic Guidance</span>
+        <h2>Advisory Board</h2>
+        <p>Distinguished professionals who provide strategic direction and independent counsel to Development Strategies.</p>
+      </div>
+
+      <div class="advisory-grid">
+
+        <div class="advisor-card fade-in">
+          <img src="media/team/wfs.gif" alt="William Frederick Shaw" class="advisor-photo" onerror="this.outerHTML='<div class=\'advisor-avatar\'>🎓</div>'" />
+          <h4>William Frederick Shaw, Dr.PH, MPH</h4>
+          <div class="role">Founder &amp; CEO, Developing Indigenous Resources (DIR), USA</div>
+        </div>
+
+        <div class="advisor-card fade-in">
+          <img src="media/team/dna.gif" alt="Nasim Ashraf" class="advisor-photo" onerror="this.outerHTML='<div class=\'advisor-avatar\'>👨‍⚕️</div>'" />
+          <h4>Nasim Ashraf, MD</h4>
+          <div class="role">Founder &amp; President, DNA Strategies, USA</div>
+        </div>
+
+        <div class="advisor-card fade-in">
+          <img src="media/team/dbw.gif" alt="Douglas Blackwood" class="advisor-photo" onerror="this.outerHTML='<div class=\'advisor-avatar\'>🎓</div>'" />
+          <h4>Douglas Blackwood, MRCP, PhD, MRCPsych</h4>
+          <div class="role">Professor of Psychiatric Genetics, University of Edinburgh</div>
+        </div>
+
+        <div class="advisor-card fade-in">
+          <img src="media/team/jf.gif" alt="Jane Fisher" class="advisor-photo" onerror="this.outerHTML='<div class=\'advisor-avatar\'>🎓</div>'" />
+          <h4>Jane Fisher, BSc, PhD</h4>
+          <div class="role">Professor, Monash University, Australia</div>
+        </div>
+
+        <div class="advisor-card fade-in">
+          <img src="media/team/tariq.gif" alt="Dr. Tariq H Cheema" class="advisor-photo" onerror="this.outerHTML='<div class=\'advisor-avatar\'>🌐</div>'" />
+          <h4>Dr. Tariq H Cheema, MD</h4>
+          <div class="role">Founder &amp; CEO, World Congress of Muslim Philanthropists, USA</div>
+        </div>
+
+        <div class="advisor-card fade-in">
+          <img src="media/team/ph.gif" alt="Peter Hill" class="advisor-photo" onerror="this.outerHTML='<div class=\'advisor-avatar\'>🎓</div>'" />
+          <h4>Peter Hill, MBBS, BA, FAFPHM, PhD</h4>
+          <div class="role">Associate Professor, SPH, The University of Queensland, Australia</div>
+        </div>
+
+        <div class="advisor-card fade-in">
+          <img src="media/team/hashem.gif" alt="Abul Hashem" class="advisor-photo" onerror="this.outerHTML='<div class=\'advisor-avatar\'>🌐</div>'" />
+          <h4>Abul Hashem, BS, MA</h4>
+          <div class="role">President &amp; CEO, Global Development Support, USA</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-banner">
+    <div class="container cta-banner-inner">
+      <h2>Work With Our Expert Team</h2>
+      <p>Engage Development Strategies for your next development assignment and benefit from senior-led, high-quality delivery.</p>
+      <div class="cta-banner-actions">
+        <a href="contact.html" class="btn btn-white">Contact Us</a>
+        <a href="expertise.html" class="btn btn-outline">Our Expertise</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-logo"><img src="media/logo-1.png" alt="Development Strategies Associates" onerror="this.style.display='none'" />
+          <div class="logo-text"><strong>Development Strategies</strong><span>Associates</span></div></div>
+          <p>Improving human development indicators through systems strengthening and enhancing equitable access to opportunities and social sector services.</p>
+          <div class="footer-contact">
+            <div class="footer-contact-item"><span class="icon">📍</span> Office 2B, Ascon Height-II, Block C, Main Soan Avenue, Soan Garden, Islamabad</div>
+            <div class="footer-contact-item"><span class="icon">📞</span> +92 (321) 500 8091</div>
+            <div class="footer-contact-item"><span class="icon">✉️</span> <a href="mailto:info@ds.org.pk">info@ds.org.pk</a></div>
+          </div>
+        </div>
+        <div class="footer-col"><h5>Organisation</h5><ul class="footer-links"><li><a href="about.html">About Us</a></li><li><a href="team.html">Management Team</a></li><li><a href="team.html#advisory">Advisory Board</a></li><li><a href="clients.html">Our Clients</a></li></ul></div>
+        <div class="footer-col"><h5>Services</h5><ul class="footer-links"><li><a href="domains.html">Our Domains</a></li><li><a href="expertise.html">Expertise</a></li><li><a href="projects.html">Projects</a></li><li><a href="publications.html">Publications</a></li><li><a href="opportunities.html">Opportunities</a></li></ul></div>
+        <div class="footer-col"><h5>Contact</h5><ul class="footer-links"><li><a href="contact.html">Contact Us</a></li><li><a href="mailto:info@ds.org.pk">info@ds.org.pk</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 Development Strategies. All Rights Reserved.</span><div style="display:flex;gap:1.5rem;"><a href="contact.html">Contact</a></div></div>
+    </div>
+  </footer>
+
+  <button id="back-to-top" aria-label="Back to top">↑</button>
+  <script src="js/main.js"></script>
+</body>
+</html>
