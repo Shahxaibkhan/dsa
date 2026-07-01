@@ -265,8 +265,19 @@ section { padding: 5rem 0; }
 .nav-link.active { color: var(--teal); background: var(--teal-light); }
 .navbar.transparent .nav-link.active { color: var(--white); background: rgba(255,255,255,.18); }
 
-.nav-link .chevron { font-size: .65rem; transition: transform var(--transition); }
-.nav-item:hover .chevron { transform: rotate(180deg); }
+.nav-link .chevron {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid currentColor;
+  vertical-align: middle;
+  margin-left: 3px;
+  transition: transform var(--transition);
+}
+.nav-item:hover .chevron,
+.nav-item.open .chevron { transform: rotate(180deg); }
 
 .nav-cta {
   margin-left: .5rem;
