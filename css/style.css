@@ -1588,9 +1588,14 @@ footer {
     border-radius: 0;
     padding: .25rem 0 .25rem .75rem;
     margin-top: .25rem;
+    pointer-events: all;
     display: none;
   }
-  .nav-item.open .dropdown { display: block; }
+  .nav-item.open .dropdown {
+    display: block;
+    transform: none;
+    position: static;
+  }
 
   /* Hero */
   .hero-inner { padding: 7rem 0 4rem; }
